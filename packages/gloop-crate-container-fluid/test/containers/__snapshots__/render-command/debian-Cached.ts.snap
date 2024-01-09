@@ -1,0 +1,4 @@
+RUN --mount=type=cache,id=cache-apt-${TARGETARCH},target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,id=lib-apt-${TARGETARCH},target=/var/lib/apt,sharing=locked \
+    set -eux ; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends some

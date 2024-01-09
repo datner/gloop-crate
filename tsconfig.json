@@ -1,0 +1,59 @@
+{
+  "include": [
+    "packages/gloop-crate-cli/src/**/*.ts",
+    "packages/gloop-crate-container-fluid/src/**/*.ts",
+    "packages/gloop-crate-operator/src/**/*.ts"
+  ],
+  "exclude": [],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true
+  },
+  "compilerOptions": {
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "es2019",
+      "es2020",
+      "es2021",
+      "es2022",
+      "dom",  
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./",
+    "outDir": "build",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "emitDecoratorMetadata": false,
+    "declaration": false,
+    "declarationMap": false,
+    "paths": {
+      "app/*": [
+        "packages/gloop-crate-app/src/*",
+      ],
+      "container-fluid/*": [
+        "packages/gloop-crate-container-fluid/src/*"
+      ],
+      "operator/*": [
+        "packages/gloop-crate-operator/src/*"
+      ],
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "@crate-monster/gloop-crate-container-fluid",
+  "version": "0.1.0",
+  "description": "Gloop Crate Containers",
+  "scripts": {
+    "lint": "eslint . --config ../../eslint.config.js --fix",
+    "format": "prettier --config ../../.prettierrc.cjs **/src/*.ts **/test/*.ts -w",
+    "build": "tsc",
+    "test": "vitest -c ../../vitest.config.js --run",
+    "coverage": "vitest -c ../../vitest.config.js --coverage.enabled=true --run",
+    "update-snapshots": "vitest -c ../../vitest.config.js -u --run",
+    "watch": "vitest -c ../../vitest.config.js --coverage.enabled=true --ui"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.3.9",
+    "@swc/core": "^1.4.0",
+    "@swc/helpers": "^0.5.6",
+    "@types/node": "^20.11.17",
+    "@vitest/coverage-v8": "^1.2.2",
+    "@vitest/ui": "^1.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "swc": "^1.0.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "dependencies": {
+    "@effect/experimental": "^0.9.7",
+    "@effect/platform": "^0.44.6",
+    "@effect/platform-node": "^0.43.6",
+    "@effect/schema": "^0.62.5",
+    "@octokit/auth-token": "^4.0.0",
+    "@octokit/request": "^8.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.3",
+    "dotenv-flow": "^4.1.0",
+    "effect": "^2.3.4",
+    "fast-check": "^3.15.1",
+    "semver": "^7.6.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/Observability.ts"
+    },
+    "./Observability.ts": {
+      "import": "./src/Observability.ts"
+    }
+  },
+  "engines": {
+    "node": "20"
+  },
+  "license": "MPL-2.0-no-copyleft-exception",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitsnap/config.git"
+  },
+  "type": "module",
+  "packageManager": "yarn@4.0.2",
+  "authors": [
+    {
+      "name": "Yuriy Yarosh",
+      "email": "yuriy@yarosh.dev",
+      "organization": true
+    }
+  ]
+}

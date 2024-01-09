@@ -1,0 +1,4 @@
+RUN --mount=type=cache,id=cache-apk-${TARGETARCH},target=/var/cache/apk,sharing=locked \
+    set -eux ; \
+    apk add some ; \
+    echo No cleanup

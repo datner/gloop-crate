@@ -1,0 +1,57 @@
+{
+  "name": "@crate-monster/gloop-crate-cli",
+  "version": "0.1.0",
+  "description": "Global ",
+  "scripts": {
+    "lint": "eslint . --config ../../eslint.config.js --fix",
+    "format": "prettier --config ../../.prettierrc.cjs **/src/*.ts **/test/*.ts -w",
+    "test": "vitest -c ../../vitest.config.js --run",
+    "update": "vitest -c ../../vitest.config.js -u --run",
+    "watch": "vitest -c ../../vitest.config.js --ui",
+    "coverage": "vitest -c ../../vitest.config.js"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.3.9",
+    "@swc/core": "^1.4.0",
+    "@swc/helpers": "^0.5.6",
+    "@types/node": "^20.11.17",
+    "@vitest/ui": "^1.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "swc": "^1.0.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "dependencies": {
+    "@crate-monster/gloop-crate-container-fluid": "*",
+    "commander": "^12.0.0",
+    "effect": "^2.3.4",
+    "semver": "^7.6.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/Observability.ts"
+    },
+    "./Observability.ts": {
+      "import": "./src/Observability.ts"
+    }
+  },
+  "engines": {
+    "node": "20"
+  },
+  "license": "MPL-2.0-no-copyleft-exception",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitsnap/config.git"
+  },
+  "type": "module",
+  "packageManager": "yarn@4.0.2",
+  "authors": [
+    {
+      "name": "Yuriy Yarosh",
+      "email": "yuriy@yarosh.dev",
+      "organization": true
+    }
+  ]
+}

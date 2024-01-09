@@ -1,0 +1,55 @@
+# VS Code
+.vscode
+.vscode/**
+.idea
+.idea/**
+
+.husky
+
+node_modules/**/*
+node_modules/
+npm-debug.*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# MacOS
+.DS_Store
+*.pem
+
+# Misc
+.DS_Store
+.env*
+
+.pnp
+.pnp.cjs
+.pnp.loader.mjs
+
+# Yarn 
+.yarn/*
+# We don't push offline cache, but treat it as a CI artifact
+# !.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+#!.yarn/sdks
+!.yarn/versions
+
+# Turborepo
+.turbo
+.turbo/**
+
+# dotenv-flow
+.env.*.local
+.env.local
+
+# Typescript
+*.tsbuildinfo
+
+# Operations
+Dockerfile
+
+# Storybook
+storybook-static/

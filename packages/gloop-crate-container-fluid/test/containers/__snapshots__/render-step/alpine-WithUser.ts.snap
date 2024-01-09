@@ -1,0 +1,25 @@
+USER test
+
+COPY --from=build . app
+
+ARG args=args
+ARG UID=1000
+ARG GID=1000
+
+ENV env=env
+
+RUN --mount=type=cache,id=cache-apk-${TARGETARCH},target=/var/cache/apk,sharing=locked \
+    set -eux ; \
+    addgroup --gid 1000 test ; \
+    mkdir -p /test ; \
+    adduser --ingroup test --disabled-password --gecos "" --uid 1000 --home /test --shell /bin/sh test ; \
+    chown -R test:test /test ; \
+    apk add some ; \
+    apk fetch -R some ; \
+    mkdir -p apks/var/cache/apk ; \
+    apk index -o apks/var/cache/apk/APKINDEX.00000000.tar.gz *.apk ; \
+    for apk in *.apk; do tar xfz "$apk" --directory apks --overwrite; done ; \
+    rm -rf apks/.* || true ; \
+    echo No cleanup
+
+ENV env=""

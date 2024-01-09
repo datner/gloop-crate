@@ -1,0 +1,72 @@
+{
+  "name": "@crate-monster/gloop-crate",
+  "version": "0.1.0",
+  "description": "Monstrous Container Images",
+  "scripts": {
+    "i18n-extract": "turbo run i18n-extract --parallel",
+    "i18n-compile": "turbo run i18n-compile --parallel",
+    "generate": "turbo run generate --parallel",
+    "format": "turbo run format --parallel",
+    "build": "turbo run build --parallel",
+    "lint": "turbo run lint --parallel",
+    "test": "turbo run test --parallel",
+    "coverage": "turbo run coverage --parallel",
+    "postinstall": "husky install .husky"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@eslint/js": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-turbo": "^1.12.3",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-license-header": "^0.6.0",
+    "eslint-plugin-no-secrets": "^0.8.9",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-regexp": "^2.2.0",
+    "eslint-plugin-security": "^2.1.0",
+    "eslint-plugin-sonarjs": "^0.24.0",
+    "eslint-plugin-turbo": "^1.12.3",
+    "globals": "^14.0.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.3",
+    "vite": "5.1.1",
+    "vite-plugin-linter": "^2.1.1",
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^1.2.2"
+  },
+  "exports": [],
+  "engines": {
+    "node": "20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "license": "MPL-2.0-no-copyleft-exception",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitsnap/config.git"
+  },
+  "type": "module",
+  "packageManager": "yarn@4.0.2",
+  "authors": [
+    {
+      "name": "Yuriy Yarosh",
+      "email": "yuriy@yarosh.dev",
+      "organization": true
+    }
+  ],
+  "peerDependenciesMeta": {
+    "babel-plugin-macros": {
+      "optional": true
+    }
+  }
+}

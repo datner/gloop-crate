@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [
+    ".env",
+    ".env.local",
+    ".env.test.local"
+  ],
+  "pipeline": {
+    "format": {
+      "dependsOn": [
+        "^format"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build",
+        "format"
+      ],
+      "outputs": [
+        "build/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint",
+        "build",
+        "format"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^test",
+        "lint"
+      ]
+    },
+    "watch": {
+      "dependsOn": [
+        "^coverage",
+        "lint"
+      ]
+    },
+    "coverage": {
+      "dependsOn": [
+        "^test",
+        "build",
+        "lint"
+      ]
+    },
+    "update-snapshots": {
+      "cache": false
+    }
+  }
+}
