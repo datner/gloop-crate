@@ -27,6 +27,8 @@ yarn-error.*
 .pnp.cjs
 .pnp.loader.mjs
 
+coverage/
+
 # Yarn 
 .yarn/*
 # We don't push offline cache, but treat it as a CI artifact

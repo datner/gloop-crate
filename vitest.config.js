@@ -10,6 +10,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
+    coverage: {
+      reporter: ['text', 'lcov']
+    },
     environment: 'node',
     include: ['test/**/*Test.ts'],
     pool: 'vmForks'

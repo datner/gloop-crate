@@ -36,29 +36,29 @@ import { Ruby } from './languages/Ruby.ts';
 import { Rust } from './languages/Rust.ts';
 import { TruffleRuby } from './languages/TruffleRuby.ts';
 
-// import { ArtifactsContainers } from './apps/artifacts/Artifacts.ts';
-// import { AutoscalingContainers } from './apps/autoscaling/Autoscaling.ts';
-// import { BackupsContainers } from './apps/backups/Backups.ts';
-// import { BudgetsContainers } from './apps/budgets/Budgets.ts';
-// import { ChaosContainers } from './apps/chaos/Chaos.ts';
-// import { CommunicationsContainers } from './apps/communications/Communications.ts';
-// import { ConnectivityContainers } from './apps/connectivity/Connectivity.ts';
-// import { DatabaseContainers } from './apps/database/Database.ts';
-// import { DeliveryContainers } from './apps/delivery/Delivery.ts';
-// import { DevelopmentContainers } from './apps/development/Development.ts';
-// import { DomainsContainers } from './apps/domains/Domains.ts';
-// import { EventSourcingContainers } from './apps/event-sourcing/EventSourcing.ts';
-// import { ExtractTransformLoadContainers } from './apps/extract-transform-load/ExtractTransformLoad.ts';
-// import { GitContainers } from './apps/git/Git.ts';
-// import { InfraContainers } from './apps/infra/Infra.ts';
-// import { ItsmContainers } from './apps/itsm/Itsm.ts';
-// import { MachineLearningContainers } from './apps/machine-learning/MachineLearning.ts';
-// import { ObservabilityContainers } from './apps/observability/Observability.ts';
-// import { SecretsContainers } from './apps/secrets/Secrets.ts';
-// import { SecurityContainers } from './apps/security/Security.ts';
-// import { ServerlessContainers } from './apps/serverless/Serverless.ts';
-// import { ServiceMeshContainers } from './apps/service-mesh/ServiceMesh.ts';
-// import { StorageContainers } from './apps/storage/Storage.ts';
+import { ArtifactsContainers } from './apps/artifacts/Artifacts.ts';
+import { AutoscalingContainers } from './apps/autoscaling/Autoscaling.ts';
+import { BackupsContainers } from './apps/backups/Backups.ts';
+import { BudgetsContainers } from './apps/budgets/Budgets.ts';
+import { ChaosContainers } from './apps/chaos/Chaos.ts';
+import { CommunicationsContainers } from './apps/communications/Communications.ts';
+import { ConnectivityContainers } from './apps/connectivity/Connectivity.ts';
+import { DatabaseContainers } from './apps/database/Database.ts';
+import { DeliveryContainers } from './apps/delivery/Delivery.ts';
+import { DevelopmentContainers } from './apps/development/Development.ts';
+import { DomainsContainers } from './apps/domains/Domains.ts';
+import { EventSourcingContainers } from './apps/event-sourcing/EventSourcing.ts';
+import { ExtractTransformLoadContainers } from './apps/extract-transform-load/ExtractTransformLoad.ts';
+import { GitContainers } from './apps/git/Git.ts';
+import { InfraContainers } from './apps/infra/Infra.ts';
+import { ItsmContainers } from './apps/itsm/Itsm.ts';
+import { MachineLearningContainers } from './apps/machine-learning/MachineLearning.ts';
+import { ObservabilityContainers } from './apps/observability/Observability.ts';
+import { SecretsContainers } from './apps/secrets/Secrets.ts';
+import { SecurityContainers } from './apps/security/Security.ts';
+import { ServerlessContainers } from './apps/serverless/Serverless.ts';
+import { ServiceMeshContainers } from './apps/service-mesh/ServiceMesh.ts';
+import { StorageContainers } from './apps/storage/Storage.ts';
 
 export type CopyFromTo = { from: string; to: string; layer: string };
 
@@ -135,9 +135,6 @@ export const versionToUse = (distro: Distro, version: O.Option<string>) => (avai
     )
   );
 
-export const ContainerDependencies = (container: Container): Container[] =>
-  container.layers.map((layer) => (typeof layer.from === 'string' ? null : layer.from)).filter((f) => f !== null) as unknown as Container[];
-
 export const ContainerToString = (distro: Distro) =>
   F.flow((container: Container) => {
     const layers = F.pipe(container.layers, A.map(LayerToString(distro)));
@@ -173,31 +170,31 @@ const LanguageContainers = HashMap.fromIterable([
 export const AllContainers = F.pipe(
   [
     DistroContainers,
-    LanguageContainers
+    LanguageContainers,
     // Everything else
-    // ArtifactsContainers,
-    // AutoscalingContainers,
-    // BackupsContainers,
-    // BudgetsContainers,
-    // ChaosContainers,
-    // CommunicationsContainers,
-    // ConnectivityContainers,
-    // DatabaseContainers,
-    // DeliveryContainers,
-    // DevelopmentContainers,
-    // DomainsContainers,
-    // EventSourcingContainers,
-    // ExtractTransformLoadContainers,
-    // GitContainers,
-    // InfraContainers,
-    // ItsmContainers,
-    // MachineLearningContainers,
-    // ObservabilityContainers,
-    // SecretsContainers,
-    // SecurityContainers,
-    // ServerlessContainers,
-    // ServiceMeshContainers,
-    // StorageContainers
+    ArtifactsContainers,
+    AutoscalingContainers,
+    BackupsContainers,
+    BudgetsContainers,
+    ChaosContainers,
+    CommunicationsContainers,
+    ConnectivityContainers,
+    DatabaseContainers,
+    DeliveryContainers,
+    DevelopmentContainers,
+    DomainsContainers,
+    EventSourcingContainers,
+    ExtractTransformLoadContainers,
+    GitContainers,
+    InfraContainers,
+    ItsmContainers,
+    MachineLearningContainers,
+    ObservabilityContainers,
+    SecretsContainers,
+    SecurityContainers,
+    ServerlessContainers,
+    ServiceMeshContainers,
+    StorageContainers
   ],
   A.map(HashMap.toEntries),
   A.flatten,

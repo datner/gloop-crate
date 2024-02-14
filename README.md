@@ -30,7 +30,7 @@ libdiscovery node:21 /usr/local/bin/node
 
 Gloop Crate project, derived images, and dockerfiles do not imply, in any shape or form, that Red Hat / Oracle / VMWare support or endorse their usage.
 
-The author of Gloop Crate project [Yuriy Yarosh](yuriy@yarosh.dev) does provide limited commercial support for the provided Dockerfiles, container images, and supply chain audit.
+The author of Gloop Crate project [Yuriy Yarosh](mailto:yuriy@yarosh.dev) does provide limited commercial support for the provided Dockerfiles, container images, and supply chain audit.
 
 ### Linux base distributions
 
