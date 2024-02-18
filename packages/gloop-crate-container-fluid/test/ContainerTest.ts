@@ -13,10 +13,10 @@ import * as HashMap from 'effect/HashMap';
 import * as Layer from 'effect/Layer';
 import * as CP from 'effect/ConfigProvider';
 
-import { Container, ContainerToString, LatestContainers, versionToUse } from '../src/Container.ts';
-import { HttpService, HttpServiceLive } from '../src/Http.ts';
-import { Versions, VersionsLive } from '../src/Versions.ts';
-// import { ResolveVersionsErr } from '../src/versions/ScrapedVersion.ts';
+import { Container, ContainerToString, LatestContainers, versionToUse } from 'container-fluid/Container.ts';
+import { HttpService, HttpServiceLive } from 'container-fluid/Http.ts';
+import { Versions, VersionsLive } from 'container-fluid/Versions.ts';
+// import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
 
 const tokenMissing = () => !('GITHUB_TOKEN' in process.env);
 

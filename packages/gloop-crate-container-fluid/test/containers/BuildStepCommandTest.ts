@@ -11,8 +11,8 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as HashSet from 'effect/HashSet';
 
-import { BuildStepCommand, CommandToString, joinRunCommands } from '../../src/containers/BuildStepCommand.ts';
-import { AllDistros, Distro } from '../../src/Distro.ts';
+import { BuildStepCommand, CommandToString, joinRunCommands } from 'container-fluid/containers/BuildStepCommand.ts';
+import { AllDistros, Distro } from 'container-fluid/Distro.ts';
 
 import { testCommands } from './RenderFixtures.ts';
 

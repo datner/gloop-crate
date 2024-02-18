@@ -7,11 +7,11 @@
 // import * as Ef from 'effect/Effect';
 import * as HashMap from 'effect/HashMap';
 
-import { AddonResizer, GetAddonResizerVersions } from './addon-resizer/AddonResizer.ts';
-import { ClusterAutoscaler, GetClusterAutoscalerVersions } from './cluster-autoscaler/ClusterAutoscaler.ts';
-import { Descheduler, GetDeschedulerVersions } from './descheduler/Descheduler.ts';
-import { Keda, GetKedaVersions } from './keda/Keda.ts';
-import { VerticalPodAutoscaler, GetVerticalPodAutoscalerVersions } from './vpa/Vpa.ts';
+import { AddonResizer, GetAddonResizerVersions } from 'container-fluid/apps/autoscaling/addon-resizer/AddonResizer.ts';
+import { ClusterAutoscaler, GetClusterAutoscalerVersions } from 'container-fluid/apps/autoscaling/cluster-autoscaler/ClusterAutoscaler.ts';
+import { Descheduler, GetDeschedulerVersions } from 'container-fluid/apps/autoscaling/descheduler/Descheduler.ts';
+import { Keda, GetKedaVersions } from 'container-fluid/apps/autoscaling/keda/Keda.ts';
+import { VerticalPodAutoscaler, GetVerticalPodAutoscalerVersions } from 'container-fluid/apps/autoscaling/vpa/Vpa.ts';
 
 export const AutoscalingVersions = HashMap.fromIterable([
   ['addon-autoscaler', GetAddonResizerVersions],

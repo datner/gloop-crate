@@ -12,10 +12,10 @@ import * as Order from 'effect/Order';
 import * as HashMap from 'effect/HashMap';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GitVersionsReq, GitVersionsResolver } from '../versions/GitVersion.ts';
+import { GitVersionsReq, GitVersionsResolver } from 'container-fluid/versions/GitVersion.ts';
 
-import { Distro } from '../Distro.ts';
-import * as Cont from '../Container.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import * as Cont from 'container-fluid/Container.ts';
 
 export const GetRustVersions = F.pipe(
   Ef.request(new GitVersionsReq({ name: 'Rust', repo: 'rust', org: 'rust-lang' }), GitVersionsResolver),

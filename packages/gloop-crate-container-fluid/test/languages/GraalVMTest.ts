@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetGraalVMVersions } from '../../src/languages/GraalVM.ts';
+import { GetGraalVMVersions } from 'container-fluid/languages/GraalVM.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

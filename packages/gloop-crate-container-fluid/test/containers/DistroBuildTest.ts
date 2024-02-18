@@ -8,7 +8,7 @@ import { describe } from 'vitest';
 
 import * as O from 'effect/Option';
 
-import { Build } from '../../src/containers/DistroBuild.ts';
+import { Build } from 'container-fluid/containers/DistroBuild.ts';
 import { testContainerRender } from './Container.ts';
 
 describe('Build Image', () => {

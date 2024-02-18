@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetRustVersions } from '../../src/languages/Rust.ts';
+import { GetRustVersions } from 'container-fluid/languages/Rust.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

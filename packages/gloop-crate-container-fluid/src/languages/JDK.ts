@@ -12,10 +12,10 @@ import * as Order from 'effect/Order';
 import * as HashMap from 'effect/HashMap';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { ScrapeVersionsReq, ScrapeVersionsResolver } from '../versions/ScrapedVersion.ts';
+import { ScrapeVersionsReq, ScrapeVersionsResolver } from 'container-fluid/versions/ScrapedVersion.ts';
 
-import { Distro } from '../Distro.ts';
-import * as Cont from '../Container.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import * as Cont from 'container-fluid/Container.ts';
 
 export const JDKVersion = 21;
 

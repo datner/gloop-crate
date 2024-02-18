@@ -10,9 +10,9 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 import * as HashSet from 'effect/HashSet';
 
-import { BuildStep, StepToString } from '../../src/containers/BuildStep.ts';
+import { BuildStep, StepToString } from 'container-fluid/containers/BuildStep.ts';
 
-import { AllDistros, Distro } from '../../src/Distro.ts';
+import { AllDistros, Distro } from 'container-fluid/Distro.ts';
 
 import { testBuildSteps } from './RenderFixtures.ts';
 

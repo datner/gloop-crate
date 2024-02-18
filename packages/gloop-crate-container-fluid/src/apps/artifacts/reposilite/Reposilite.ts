@@ -11,8 +11,8 @@ import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
-import { CloneRepoChunk, Distro } from '../../../Distro.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
+import { CloneRepoChunk, Distro } from 'container-fluid/Distro.ts';
 import * as Cont from '../../../Container.ts';
 import { CopyFromTo } from '../../../containers/BuildStep.ts';
 

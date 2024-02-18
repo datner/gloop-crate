@@ -9,13 +9,12 @@ import * as Ef from 'effect/Effect';
 import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 
-import { Bash } from './pipeline/Bash.ts';
-import { PowerShell } from './pipeline/PowerShell.ts';
-
-import { TektonCD } from './pipeline/TektonCD.ts';
-import { GithubActions } from './pipeline/GithubActions.ts';
-import { Gitlab } from './pipeline/Gitlab.ts';
-import { Container } from './Container.ts';
+import { Bash } from 'container-fluid/pipeline/Bash.ts';
+import { PowerShell } from 'container-fluid/pipeline/PowerShell.ts';
+import { TektonCD } from 'container-fluid/pipeline/TektonCD.ts';
+import { GithubActions } from 'container-fluid/pipeline/GithubActions.ts';
+import { Gitlab } from 'container-fluid/pipeline/Gitlab.ts';
+import { Container } from 'container-fluid/Container.ts';
 
 export type Pipeline = 'bash' | 'powershell' | 'tektoncd' | 'github' | 'gitlab';
 
@@ -68,18 +67,18 @@ export const SortDependencies = (containers: Container[]): Container[][] => {
   );
 };
 
-const Pipeline = (pipelineType: Pipeline, containers: Container[]): string => {
+const Pipeline = (pipelineType: Pipeline, targetDir: string, containers: Container[]) => {
   switch (pipelineType) {
     case 'bash':
-      return Bash(SortDependencies(containers));
+      return Bash(targetDir, SortDependencies(containers));
     case 'powershell':
-      return PowerShell(SortDependencies(containers));
+      return PowerShell(targetDir, SortDependencies(containers));
     case 'tektoncd':
-      return TektonCD(SortDependencies(containers));
+      return TektonCD(targetDir, SortDependencies(containers));
     case 'github':
-      return GithubActions(SortDependencies(containers));
+      return GithubActions(targetDir, SortDependencies(containers));
     case 'gitlab':
-      return Gitlab(SortDependencies(containers));
+      return Gitlab(targetDir, SortDependencies(containers));
     default:
       return '';
   }

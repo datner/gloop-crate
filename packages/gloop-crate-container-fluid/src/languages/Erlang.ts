@@ -10,11 +10,11 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 
-import { GetGithubVersions } from '../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
-import * as Cont from '../Container.ts';
-import { Distro } from '../Distro.ts';
-import { ResolveVersionsErr } from '../versions/ScrapedVersion.ts';
+import * as Cont from 'container-fluid/Container.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
 
 export const GetErlangVersions = GetGithubVersions('erlang', 'erlang', 'otp', 'OTP-');
 

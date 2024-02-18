@@ -45,15 +45,9 @@
     "declaration": false,
     "declarationMap": false,
     "paths": {
-      "app/*": [
-        "packages/gloop-crate-app/src/*",
-      ],
       "container-fluid/*": [
         "packages/gloop-crate-container-fluid/src/*"
-      ],
-      "operator/*": [
-        "packages/gloop-crate-operator/src/*"
-      ],
+      ]
     }
   }
 }

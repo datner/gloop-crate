@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetJDKVersions } from '../../src/languages/JDK.ts';
+import { GetJDKVersions } from 'container-fluid/languages/JDK.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

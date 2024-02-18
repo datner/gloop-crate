@@ -8,9 +8,9 @@ import * as A from 'effect/ReadonlyArray';
 import * as F from 'effect/Function';
 import * as O from 'effect/Option';
 
-import { BuildStepCommand, Command } from '../../src/containers/BuildStepCommand.ts';
-import { BuildStep, CopyFromTo } from '../../src/containers/BuildStep.ts';
-import { Container, Layer, Step } from '../../src/Container.ts';
+import { BuildStepCommand, Command } from 'container-fluid/containers/BuildStepCommand.ts';
+import { BuildStep, CopyFromTo } from 'container-fluid/containers/BuildStep.ts';
+import { Layer, Step } from 'container-fluid/Container.ts';
 
 const run: A.NonEmptyArray<string> = ['echo OK', 'echo Testing... Testing...'];
 
@@ -97,13 +97,4 @@ export const testBuildLayer = Layer({
   name: 'test',
   from: 'test:latest',
   steps: [testBuildSteps[0][1] as BuildStep]
-});
-
-export const testContainer = Container({
-  org: 'testorg',
-  name: 'testname',
-  layers: [testBuildLayer],
-  entrypoint: ['/bin/test'],
-  tags: ['testorg/testname:latest'],
-  distro: 'debian'
 });

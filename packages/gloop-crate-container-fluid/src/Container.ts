@@ -11,56 +11,59 @@ import * as O from 'effect/Option';
 import * as Data from 'effect/Data';
 import * as HashSet from 'effect/HashSet';
 import * as HashMap from 'effect/HashMap';
+import * as Platform from '@effect/platform';
 
-import { AllDistros, Distro } from './Distro.ts';
+import { AllDistros, Distro } from 'container-fluid/Distro.ts';
 
-import { InvalidVersionError, Versions } from './Versions.ts';
-import { HttpService } from './Http.ts';
-import { ResolveVersionsErr } from './versions/ScrapedVersion.ts';
-import { BuildLayer, LayerToString } from './containers/BuildLayer.ts';
+import { InvalidVersionError, Versions } from 'container-fluid/Versions.ts';
+import { HttpService } from 'container-fluid/Http.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { BuildLayer, LayerToString } from 'container-fluid/containers/BuildLayer.ts';
 
-export { Layer } from './containers/BuildLayer.ts';
-export { Step } from './containers/BuildStep.ts';
-export { Command } from './containers/BuildStepCommand.ts';
+export { Layer } from 'container-fluid/containers/BuildLayer.ts';
+export { Step } from 'container-fluid/containers/BuildStep.ts';
+export { Command } from 'container-fluid/containers/BuildStepCommand.ts';
 
-import { Base } from './containers/DistroBase.ts';
-import { Build } from './containers/DistroBuild.ts';
-import { Distroless } from './containers/Distroless.ts';
-import { Erlang } from './languages/Erlang.ts';
-import { Golang } from './languages/Golang.ts';
-import { GraalPy } from './languages/GraalPy.ts';
-import { JDK } from './languages/JDK.ts';
-import { Node } from './languages/Node.ts';
-import { Python } from './languages/Python.ts';
-import { Ruby } from './languages/Ruby.ts';
-import { Rust } from './languages/Rust.ts';
-import { TruffleRuby } from './languages/TruffleRuby.ts';
+import { CopyRecursive } from 'container-fluid/Copy.ts';
 
-import { ArtifactsContainers } from './apps/artifacts/Artifacts.ts';
-import { AutoscalingContainers } from './apps/autoscaling/Autoscaling.ts';
-import { BackupsContainers } from './apps/backups/Backups.ts';
-import { BudgetsContainers } from './apps/budgets/Budgets.ts';
-import { ChaosContainers } from './apps/chaos/Chaos.ts';
-import { CommunicationsContainers } from './apps/communications/Communications.ts';
-import { ConnectivityContainers } from './apps/connectivity/Connectivity.ts';
-import { DatabaseContainers } from './apps/database/Database.ts';
-import { DeliveryContainers } from './apps/delivery/Delivery.ts';
-import { DevelopmentContainers } from './apps/development/Development.ts';
-import { DomainsContainers } from './apps/domains/Domains.ts';
-import { EventSourcingContainers } from './apps/event-sourcing/EventSourcing.ts';
-import { ExtractTransformLoadContainers } from './apps/extract-transform-load/ExtractTransformLoad.ts';
-import { GitContainers } from './apps/git/Git.ts';
-import { InfraContainers } from './apps/infra/Infra.ts';
-import { ItsmContainers } from './apps/itsm/Itsm.ts';
-import { MachineLearningContainers } from './apps/machine-learning/MachineLearning.ts';
-import { ObservabilityContainers } from './apps/observability/Observability.ts';
-import { SecretsContainers } from './apps/secrets/Secrets.ts';
-import { SecurityContainers } from './apps/security/Security.ts';
-import { ServerlessContainers } from './apps/serverless/Serverless.ts';
-import { ServiceMeshContainers } from './apps/service-mesh/ServiceMesh.ts';
-import { StorageContainers } from './apps/storage/Storage.ts';
+import { Base } from 'container-fluid/containers/DistroBase.ts';
+import { Build } from 'container-fluid/containers/DistroBuild.ts';
+import { Distroless } from 'container-fluid/containers/Distroless.ts';
+import { Erlang } from 'container-fluid/languages/Erlang.ts';
+import { Golang } from 'container-fluid/languages/Golang.ts';
+import { GraalPy } from 'container-fluid/languages/GraalPy.ts';
+import { JDK } from 'container-fluid/languages/JDK.ts';
+import { Node } from 'container-fluid/languages/Node.ts';
+import { Python } from 'container-fluid/languages/Python.ts';
+import { Ruby } from 'container-fluid/languages/Ruby.ts';
+import { Rust } from 'container-fluid/languages/Rust.ts';
+import { TruffleRuby } from 'container-fluid/languages/TruffleRuby.ts';
 
-export type CopyFromTo = { from: string; to: string; layer: string };
+import { ArtifactsContainers } from 'container-fluid/apps/artifacts/Artifacts.ts';
+import { AutoscalingContainers } from 'container-fluid/apps/autoscaling/Autoscaling.ts';
+import { BackupsContainers } from 'container-fluid/apps/backups/Backups.ts';
+import { BudgetsContainers } from 'container-fluid/apps/budgets/Budgets.ts';
+import { ChaosContainers } from 'container-fluid/apps/chaos/Chaos.ts';
+import { CommunicationsContainers } from 'container-fluid/apps/communications/Communications.ts';
+import { ConnectivityContainers } from 'container-fluid/apps/connectivity/Connectivity.ts';
+import { DatabaseContainers } from 'container-fluid/apps/database/Database.ts';
+import { DeliveryContainers } from 'container-fluid/apps/delivery/Delivery.ts';
+import { DevelopmentContainers } from 'container-fluid/apps/development/Development.ts';
+import { DomainsContainers } from 'container-fluid/apps/domains/Domains.ts';
+import { EventSourcingContainers } from 'container-fluid/apps/event-sourcing/EventSourcing.ts';
+import { ExtractTransformLoadContainers } from 'container-fluid/apps/extract-transform-load/ExtractTransformLoad.ts';
+import { GitContainers } from 'container-fluid/apps/git/Git.ts';
+import { InfraContainers } from 'container-fluid/apps/infra/Infra.ts';
+import { ItsmContainers } from 'container-fluid/apps/itsm/Itsm.ts';
+import { MachineLearningContainers } from 'container-fluid/apps/machine-learning/MachineLearning.ts';
+import { ObservabilityContainers } from 'container-fluid/apps/observability/Observability.ts';
+import { SecretsContainers } from 'container-fluid/apps/secrets/Secrets.ts';
+import { SecurityContainers } from 'container-fluid/apps/security/Security.ts';
+import { ServerlessContainers } from 'container-fluid/apps/serverless/Serverless.ts';
+import { ServiceMeshContainers } from 'container-fluid/apps/service-mesh/ServiceMesh.ts';
+import { StorageContainers } from 'container-fluid/apps/storage/Storage.ts';
+
+// export type CopyFromTo = { from: string; to: string; layer: string };
 
 // @ts-expect-error Data.Case
 export interface Container extends Data.Case {
@@ -71,6 +74,7 @@ export interface Container extends Data.Case {
   readonly layers: BuildLayer[];
   readonly availableVersions: Ef.Effect<string[], ResolveVersionsErr, HttpService>;
 
+  readonly contextSource: O.Option<string>;
   readonly tags: string[];
   readonly distro: Distro;
 
@@ -196,7 +200,7 @@ export const AllContainers = F.pipe(
     ServiceMeshContainers,
     StorageContainers
   ],
-  A.map(HashMap.toEntries),
+  A.map(HashMap.toEntries), // TODO: HashMap.concat ?
   A.flatten,
   HashMap.fromIterable
 );
@@ -215,4 +219,13 @@ export const LatestContainers = (org: string = 'crate-monster', timestamp: numbe
     ),
     Ef.all,
     Ef.map((r) => HashMap.fromIterable(r as Iterable<readonly [Distro, Container[]]>))
+  );
+
+export const CopyContext = (container: Container, targetDir: string) =>
+  F.pipe(
+    container.contextSource,
+    O.match({
+      onSome: (context) => CopyRecursive(context, targetDir),
+      onNone: () => Ef.succeed(F.constVoid()) as Ef.Effect<void, Platform.Error.PlatformError, Platform.FileSystem.FileSystem | Platform.Path.Path>
+    })
   );

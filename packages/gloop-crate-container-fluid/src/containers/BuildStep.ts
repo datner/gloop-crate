@@ -10,8 +10,8 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as S from 'effect/String';
 
-import { addNullableFields, BuildStepCommand, CommandToString, toEmpty } from './BuildStepCommand.ts';
-import { Chunk, Distro } from '../Distro.ts';
+import { addNullableFields, BuildStepCommand, CommandToString, toEmpty } from 'container-fluid/containers/BuildStepCommand.ts';
+import { Chunk, Distro } from 'container-fluid/Distro.ts';
 
 export type CopyFromTo = {
   from: string;

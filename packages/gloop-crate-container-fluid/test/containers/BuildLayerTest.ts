@@ -10,9 +10,9 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 import * as HashSet from 'effect/HashSet';
 
-import { LayerToString } from '../../src/containers/BuildLayer.ts';
+import { LayerToString } from 'container-fluid/containers/BuildLayer.ts';
 
-import { AllDistros, Distro } from '../../src/Distro.ts';
+import { AllDistros, Distro } from 'container-fluid/Distro.ts';
 
 import { testBuildLayer } from './RenderFixtures.ts';
 

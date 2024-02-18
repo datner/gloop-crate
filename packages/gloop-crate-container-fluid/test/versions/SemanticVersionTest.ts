@@ -8,7 +8,7 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 
 import { describe, it } from 'vitest';
-import { SemanticVersion } from '../../src/versions/SemanticVersion.ts';
+import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
 
 describe('Semantic Versions', async () => {
   it('should be comparable', async ({ expect }) => {

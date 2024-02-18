@@ -61,7 +61,7 @@ The author of Gloop Crate project [Yuriy Yarosh](mailto:yuriy@yarosh.dev) does p
  - [x] Multi-distro [libdiscovery](./packages/libdiscovery) trimmed [distroless](https://github.com/GoogleContainerTools/distroless) images 
  - [x] CI build pipeline generation for dependent containers
  - [ ] [in-toto](https://in-toto.io/) attestation and sigstore keyless signing support
- - [ ] [GitSign]() support
+ - [ ] [GitSign](https://github.com/sigstore/gitsign) support
  - [ ] Comprehensive distribution channels 
  - [ ] Anomaly detection support
  - [ ] [Unikraft](https://unikraft.org/) images

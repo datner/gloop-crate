@@ -10,9 +10,9 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
-import { CloneRepoChunk, Distro } from '../../../Distro.ts';
+import { CloneRepoChunk, Distro } from 'container-fluid/Distro.ts';
 import * as Cont from '../../../Container.ts';
 
 export const GetCoreDNSVersions = GetGithubVersions('CoreDNS', 'coredns', 'coredns');

@@ -11,12 +11,12 @@ import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GitVersionsReq, GitVersionsResolver } from '../versions/GitVersion.ts';
-import { SemanticVersion } from '../versions/SemanticVersion.ts';
+import { GitVersionsReq, GitVersionsResolver } from 'container-fluid/versions/GitVersion.ts';
+import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
 
-import { Distro } from '../Distro.ts';
-import * as Cont from '../Container.ts';
-import { JDKVersion } from './JDK.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import * as Cont from 'container-fluid/Container.ts';
+import { JDKVersion } from 'container-fluid/languages/JDK.ts';
 
 export const GetGraalVMVersions = F.pipe(
   GitVersionsResolver,

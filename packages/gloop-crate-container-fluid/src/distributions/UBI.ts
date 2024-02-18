@@ -11,7 +11,7 @@
 
 import * as Ef from 'effect/Effect';
 
-import { Chunks as OracleChunks } from './Notora.ts';
+import { Chunks as OracleChunks } from 'container-fluid/distributions/Notora.ts';
 
 export const Chunks = OracleChunks;
 

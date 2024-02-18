@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { Base } from '../../src/containers/DistroBase.ts';
+import { Base } from 'container-fluid/containers/DistroBase.ts';
 import { testContainerRender } from './Container.ts';
 
 describe('Base Image', () => {

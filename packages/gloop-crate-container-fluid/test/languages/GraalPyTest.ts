@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetGraalPyVersions } from '../../src/languages/GraalPy.ts';
+import { GetGraalPyVersions } from 'container-fluid/languages/GraalPy.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('GraalPy Versions', async () => {

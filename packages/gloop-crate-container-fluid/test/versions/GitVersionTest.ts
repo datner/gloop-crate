@@ -11,8 +11,8 @@ import * as CP from 'effect/ConfigProvider';
 
 import { describe, it } from 'vitest';
 
-import { HttpService, HttpServiceLive } from '../../src/Http.ts';
-import { GitVersionsReq, MakeGithubPaginatedRequestWith, MakeGithubRequestWith } from '../../src/versions/GitVersion.ts';
+import { HttpService, HttpServiceLive } from 'container-fluid/Http.ts';
+import { GitVersionsReq, MakeGithubPaginatedRequestWith, MakeGithubRequestWith } from 'container-fluid/versions/GitVersion.ts';
 
 describe('Git Versions Resolver', async () => {
   const tokenMissing = () => !('GITHUB_TOKEN' in process.env);

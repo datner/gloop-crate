@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetPythonVersions } from '../../src/languages/Python.ts';
+import { GetPythonVersions } from 'container-fluid/languages/Python.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

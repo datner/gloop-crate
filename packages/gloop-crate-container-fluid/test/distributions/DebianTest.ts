@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetDebianVersions } from '../../src/distributions/Debian.ts';
+import { GetDebianVersions } from 'container-fluid/distributions/Debian.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('Debian Versions', async () => {

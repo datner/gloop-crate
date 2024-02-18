@@ -6,10 +6,10 @@
 
 import * as HashMap from 'effect/HashMap';
 
-import { Dragonfly, GetDragonFlyVersions } from './dragonfly/Dragonfly.ts';
-import { Harbor, GetHarborVersions } from './harbor/Harbor.ts';
-import { Reposilite, GetReposiliteVersions } from './reposilite/Reposilite.ts';
-import { Verdaccio, GetVerdaccioVersions } from './verdaccio/Verdaccio.ts';
+import { Dragonfly, GetDragonFlyVersions } from 'container-fluid/apps/artifacts/dragonfly/Dragonfly.ts';
+import { Harbor, GetHarborVersions } from 'container-fluid/apps/artifacts/harbor/Harbor.ts';
+import { Reposilite, GetReposiliteVersions } from 'container-fluid/apps/artifacts/reposilite/Reposilite.ts';
+import { Verdaccio, GetVerdaccioVersions } from 'container-fluid/apps/artifacts/verdaccio/Verdaccio.ts';
 
 export const ArtifactVersions = HashMap.fromIterable([
   ['dragonfly', GetDragonFlyVersions],

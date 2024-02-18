@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetPhotonVersions } from '../../src/distributions/Photon.ts';
+import { GetPhotonVersions } from 'container-fluid/distributions/Photon.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('Photon Versions', async () => {

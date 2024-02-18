@@ -5,10 +5,11 @@
 */
 
 import { defineConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
+// import tsconfigPaths from 'vite-tsconfig-paths';
+import * as path from 'node:path';
 
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  // plugins: [tsconfigPaths()],
   test: {
     coverage: {
       reporter: ['text', 'lcov']
@@ -17,5 +18,8 @@ export default defineConfig({
     include: ['test/**/*Test.ts'],
     pool: 'vmForks'
     // setupFiles: ['./setup.node.ts']
+  },
+  resolve: {
+    alias: [{ find: 'container-fluid', replacement: path.resolve(__dirname, 'packages/gloop-crate-container-fluid/src') }]
   }
 });

@@ -9,7 +9,7 @@ import * as Data from 'effect/Data';
 import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 
-import { Chunk, Distro } from '../Distro.ts';
+import { Chunk, Distro } from 'container-fluid/Distro.ts';
 
 // @ts-expect-error Data.Case
 export interface BuildStepCommand extends Data.Case {

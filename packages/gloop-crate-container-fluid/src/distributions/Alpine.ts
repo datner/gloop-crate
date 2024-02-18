@@ -9,9 +9,9 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 import * as HashMap from 'effect/HashMap';
 
-import { ScrapeVersionsResolver, ScrapeVersionsReq } from '../versions/ScrapedVersion.ts';
-import { SemanticVersion } from '../versions/SemanticVersion.ts';
-import { Chunk, ChunkTemplate } from '../Distro.ts';
+import { ScrapeVersionsResolver, ScrapeVersionsReq } from 'container-fluid/versions/ScrapedVersion.ts';
+import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
+import { Chunk, ChunkTemplate } from 'container-fluid/Distro.ts';
 
 export const Chunks = HashMap.fromIterable<Chunk, ChunkTemplate>([
   ['PkgCachePrep', () => [`apk -U update`, `apk -U upgrade -q`, `apk add alpine-conf`, `setup-apkcache /var/cache/apk`]],

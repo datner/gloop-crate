@@ -11,16 +11,16 @@ import * as EfLayer from 'effect/Layer';
 import * as CP from 'effect/ConfigProvider';
 import * as CE from 'effect/ConfigError';
 
-import { AllDistros, Distro } from '../../src/Distro.ts';
-import { HttpService, HttpServiceLive } from '../../src/Http.ts';
-import { Versions, VersionsLive } from '../../src/Versions.ts';
-import { ResolveVersionsErr } from '../../src/versions/ScrapedVersion.ts';
-import { Container, ContainerToString } from '../../src/Container.ts';
+import { AllDistros, Distro } from 'container-fluid/Distro.ts';
+import { HttpService, HttpServiceLive } from 'container-fluid/Http.ts';
+import { Versions, VersionsLive } from 'container-fluid/Versions.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { Container, ContainerToString } from 'container-fluid/Container.ts';
 import * as HashSet from 'effect/HashSet';
 import * as A from 'effect/ReadonlyArray';
 
 export const testContainerRender = (
-  ef: (distro: Distro) => Ef.Effect<Versions | HttpService, ResolveVersionsErr | CE.ConfigError, Container>,
+  ef: (distro: Distro) => Ef.Effect<Container, ResolveVersionsErr | CE.ConfigError, Versions | HttpService>,
   name: string
 ) => {
   it(`should be able to render ${name} image dockerfiles`, async ({ expect }) => {

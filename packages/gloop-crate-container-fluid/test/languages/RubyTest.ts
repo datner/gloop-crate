@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetRubyVersions } from '../../src/languages/Ruby.ts';
+import { GetRubyVersions } from 'container-fluid/languages/Ruby.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

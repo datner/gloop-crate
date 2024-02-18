@@ -10,10 +10,10 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 
-import * as Cont from '../Container.ts';
-import { Chunk, Distro } from '../Distro.ts';
-import { Versions } from '../Versions.ts';
-import { ResolveVersionsErr } from '../versions/ScrapedVersion.ts';
+import * as Cont from 'container-fluid/Container.ts';
+import { Chunk, Distro } from 'container-fluid/Distro.ts';
+import { Versions } from 'container-fluid/Versions.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
 
 const commonPackages = ['ca-certificates', 'openssl', 'tzdata', 'gnupg', 'curl', 'findutils', 'fontconfig'];
 

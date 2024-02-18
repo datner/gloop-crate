@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetTruffleRubyVersions } from '../../src/languages/TruffleRuby.ts';
+import { GetTruffleRubyVersions } from 'container-fluid/languages/TruffleRuby.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

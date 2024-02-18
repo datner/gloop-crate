@@ -11,10 +11,10 @@ import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
 import * as Cont from '../../../Container.ts';
-import { CloneRepoChunk, Distro } from '../../../Distro.ts';
+import { CloneRepoChunk, Distro } from 'container-fluid/Distro.ts';
 import { LangCache } from '../../../languages/Golang.ts';
 
 export const GetGrafanaVersions = GetGithubVersions('Grafana', 'grafana', 'grafana');

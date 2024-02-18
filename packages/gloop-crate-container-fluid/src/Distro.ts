@@ -10,12 +10,12 @@ import * as O from 'effect/Option';
 import * as HashSet from 'effect/HashSet';
 import * as HashMap from 'effect/HashMap';
 
-import { Chunks as AlpineChunks } from './distributions/Alpine.ts';
-import { Chunks as DebianChunks } from './distributions/Debian.ts';
-import { Chunks as OracleChunks } from './distributions/Notora.ts';
-import { Chunks as PhotonChunks } from './distributions/Photon.ts';
-import { Chunks as RockyChunks } from './distributions/Rocky.ts';
-import { Chunks as UBIChunks } from './distributions/UBI.ts';
+import { Chunks as AlpineChunks } from 'container-fluid/distributions/Alpine.ts';
+import { Chunks as DebianChunks } from 'container-fluid/distributions/Debian.ts';
+import { Chunks as OracleChunks } from 'container-fluid/distributions/Notora.ts';
+import { Chunks as PhotonChunks } from 'container-fluid/distributions/Photon.ts';
+import { Chunks as RockyChunks } from 'container-fluid/distributions/Rocky.ts';
+import { Chunks as UBIChunks } from 'container-fluid/distributions/UBI.ts';
 
 export type Distro = 'alpine' | 'debian' | 'rocky' | 'notora' | 'photon' | 'ubi';
 

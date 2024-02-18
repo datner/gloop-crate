@@ -8,7 +8,7 @@ import { describe } from 'vitest';
 
 import * as O from 'effect/Option';
 
-import { Distroless } from '../../src/containers/Distroless.ts';
+import { Distroless } from 'container-fluid/containers/Distroless.ts';
 import { testContainerRender } from './Container.ts';
 
 describe('Distroless Image', () => {

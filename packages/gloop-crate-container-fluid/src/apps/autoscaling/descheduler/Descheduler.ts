@@ -6,10 +6,10 @@
 
 import * as O from 'effect/Option';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
-import { GolangApp } from '../../../languages/Golang.ts';
-import { Distro } from '../../../Distro.ts';
+import { GolangApp } from 'container-fluid/languages/Golang.ts';
+import { Distro } from 'container-fluid/Distro.ts';
 
 export const GetDeschedulerVersions = GetGithubVersions('Cluster Descheduler', 'kubernetes-sigs', 'descheduler');
 

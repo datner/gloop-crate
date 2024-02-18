@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetAlpineVersions } from '../../src/distributions/Alpine.ts';
+import { GetAlpineVersions } from 'container-fluid/distributions/Alpine.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('Alpine Versions', async () => {

@@ -6,7 +6,7 @@
 
 import { describe, it } from 'vitest';
 
-// import { SortDependencies } from '../src/Pipeline.ts';
+// import { SortDependencies } from 'container-fluid/Pipeline.ts';
 
 describe('Pipeline generator', async () => {
   it('should be able to sort container dependencies', async ({ expect }) => {

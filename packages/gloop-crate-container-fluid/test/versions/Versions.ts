@@ -12,9 +12,9 @@ import * as Layer from 'effect/Layer';
 import * as CP from 'effect/ConfigProvider';
 import * as Order from 'effect/Order';
 
-import { SemanticVersion } from '../../src/versions/SemanticVersion.ts';
-import { ResolveVersionsErr } from '../../src/versions/ScrapedVersion.ts';
-import { HttpService, HttpServiceLive } from '../../src/Http.ts';
+import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { HttpService, HttpServiceLive } from 'container-fluid/Http.ts';
 
 import { it } from 'vitest';
 

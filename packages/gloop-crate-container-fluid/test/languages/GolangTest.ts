@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetGolangVersions } from '../../src/languages/Golang.ts';
+import { GetGolangVersions } from 'container-fluid/languages/Golang.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

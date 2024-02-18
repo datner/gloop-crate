@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetOracleVersions } from '../../src/distributions/Notora.ts';
+import { GetOracleVersions } from 'container-fluid/distributions/Notora.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('Oracle Versions', async () => {

@@ -8,8 +8,8 @@
 // import * as Ef from 'effect/Effect';
 import { describe, it } from 'vitest';
 
-// import { HttpService, HttpServiceLive } from '../../src/Http.ts';
-// import { HttpService, HttpServiceLive } from '../../src/Versions.ts';
+// import { HttpService, HttpServiceLive } from 'container-fluid/Http.ts';
+// import { HttpService, HttpServiceLive } from 'container-fluid/Versions.ts';
 
 describe('Versions Service', async () => {
   it('should be able to get versions', async ({ expect }) => {

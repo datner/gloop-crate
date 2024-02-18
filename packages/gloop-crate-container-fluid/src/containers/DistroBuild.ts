@@ -10,11 +10,11 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 
-import * as Cont from '../Container.ts';
-import { Distro } from '../Distro.ts';
-import { Versions } from '../Versions.ts';
-import { SecurityUpdateStep } from './DistroBase.ts';
-import { ResolveVersionsErr } from '../versions/ScrapedVersion.ts';
+import * as Cont from 'container-fluid/Container.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import { SecurityUpdateStep } from 'container-fluid/containers/DistroBase.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { Versions } from 'container-fluid/Versions.ts';
 
 const commonPackages = [
   'autoconf',

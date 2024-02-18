@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetNodeVersions } from '../../src/languages/Node.ts';
+import { GetNodeVersions } from 'container-fluid/languages/Node.ts';
 
 import { testVersions } from '../versions/Versions.ts';
 

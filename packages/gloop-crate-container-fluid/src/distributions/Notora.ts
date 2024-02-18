@@ -15,9 +15,9 @@ import * as A from 'effect/ReadonlyArray';
 import * as Order from 'effect/Order';
 import * as HashMap from 'effect/HashMap';
 
-import { ScrapeVersionsResolver, ScrapeVersionsReq } from '../versions/ScrapedVersion.ts';
+import { ScrapeVersionsResolver, ScrapeVersionsReq } from 'container-fluid/versions/ScrapedVersion.ts';
 
-import { Chunk, ChunkTemplate } from '../Distro.ts';
+import { Chunk, ChunkTemplate } from 'container-fluid/Distro.ts';
 
 const Upgrade = `microdnf upgrade -y --refresh --best --nodocs --noplugins --setopt=install_weak_deps=0 --setopt=keepcache=1`;
 

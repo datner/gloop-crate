@@ -10,10 +10,10 @@
 import * as O from 'effect/Option';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
-import { Distro } from '../../../Distro.ts';
-import { GolangApp } from '../../../languages/Golang.ts';
+import { Distro } from 'container-fluid/Distro.ts';
+import { GolangApp } from 'container-fluid/languages/Golang.ts';
 
 export const GetNvidiaMerlinModelsVersions = GetGithubVersions('Nvidia Merlin', 'NVIDIA-Merlin', '-models');
 

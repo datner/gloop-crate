@@ -4,7 +4,7 @@
       This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0 with no copyleft exception
 */
 
-import { Container } from '../Container.ts';
+import { Container } from 'container-fluid/Container.ts';
 // import * as Ef from 'effect/Effect';
 // import * as F from 'effect/Function';
 // import * as A from 'effect/ReadonlyArray';
@@ -18,7 +18,7 @@ import { Container } from '../Container.ts';
 // import { BuildLayer, LayerToString } from './containers/BuildLayer.ts';
 // import { AllDistros, Distro } from './Distro.ts';
 
-export const PowerShell = (containers: Container[][]) => {
+export const PowerShell = (targetDir: string, containers: Container[][]) => {
   console.log(containers);
   return '';
 };

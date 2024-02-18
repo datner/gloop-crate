@@ -10,9 +10,9 @@ import * as O from 'effect/Option';
 import * as S from 'effect/String';
 import * as Data from 'effect/Data';
 
-import { Chunk, Distro } from '../Distro.ts';
-import { BuildStep, StepToString } from './BuildStep.ts';
-import { addNullableFields, fromBoolean, joinRunCommands } from './BuildStepCommand.ts';
+import { Chunk, Distro } from 'container-fluid/Distro.ts';
+import { BuildStep, StepToString } from 'container-fluid/containers/BuildStep.ts';
+import { addNullableFields, fromBoolean, joinRunCommands } from 'container-fluid/containers/BuildStepCommand.ts';
 
 // @ts-expect-error Data.Case
 export interface BuildLayer extends Data.Case {

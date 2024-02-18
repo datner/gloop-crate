@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetUniversalBaseImageVersions } from '../../src/distributions/UBI.ts';
+import { GetUniversalBaseImageVersions } from 'container-fluid/distributions/UBI.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('UBI Versions', async () => {

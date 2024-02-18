@@ -9,9 +9,9 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 import * as Order from 'effect/Order';
 
-import { ScrapeVersionsResolver, ScrapeVersionsReq } from '../versions/ScrapedVersion.ts';
+import { ScrapeVersionsResolver, ScrapeVersionsReq } from 'container-fluid/versions/ScrapedVersion.ts';
 
-import { Chunks as OracleChunks } from './Notora.ts';
+import { Chunks as OracleChunks } from 'container-fluid/distributions/Notora.ts';
 
 export const Chunks = OracleChunks;
 

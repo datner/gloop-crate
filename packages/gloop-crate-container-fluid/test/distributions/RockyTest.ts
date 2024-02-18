@@ -6,7 +6,7 @@
 
 import { describe } from 'vitest';
 
-import { GetRockyVersions } from '../../src/distributions/Rocky.ts';
+import { GetRockyVersions } from 'container-fluid/distributions/Rocky.ts';
 import { testVersions } from '../versions/Versions.ts';
 
 describe('Rocky Versions', async () => {

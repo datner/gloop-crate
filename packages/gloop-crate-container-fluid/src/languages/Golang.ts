@@ -10,13 +10,13 @@ import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as HashMap from 'effect/HashMap';
 
-import { GetGithubVersions } from '../versions/GitVersion.ts';
-import { SecurityUpdateStep } from '../containers/DistroBase.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
+import { SecurityUpdateStep } from 'container-fluid/containers/DistroBase.ts';
 
-import * as Cont from '../Container.ts';
-import { CloneRepoChunk, Distro } from '../Distro.ts';
-import { HttpService } from '../Http.ts';
-import { ResolveVersionsErr } from '../versions/ScrapedVersion.ts';
+import * as Cont from 'container-fluid/Container.ts';
+import { CloneRepoChunk, Distro } from 'container-fluid/Distro.ts';
+import { HttpService } from 'container-fluid/Http.ts';
 
 const golangBootstrapPackages = HashMap.fromIterable<Distro, A.NonEmptyArray<string>>([
   ['alpine', ['go']],

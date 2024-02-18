@@ -10,9 +10,9 @@
 import * as O from 'effect/Option';
 // import * as ConfigError from 'effect/ConfigError';
 
-import { GetGithubVersions } from '../../../versions/GitVersion.ts';
+import { GetGithubVersions } from 'container-fluid/versions/GitVersion.ts';
 
-import { Distro } from '../../../Distro.ts';
+import { Distro } from 'container-fluid/Distro.ts';
 import { GoInstall, GolangApp } from '../../../languages/Golang.ts';
 
 const org = 'aquasecurity';

@@ -9,12 +9,12 @@ import * as Resolver from 'effect/RequestResolver';
 import * as Ef from 'effect/Effect';
 import * as A from 'effect/ReadonlyArray';
 import * as S from '@effect/schema/Schema';
+import { PrimaryKey, symbol as PK } from 'effect/PrimaryKey';
 
 import { load as ParseBody } from 'cheerio';
 
-import { HttpService } from '../Http.ts';
-import { SemanticVersion } from './SemanticVersion.ts';
-import { PrimaryKey, symbol as PK } from 'effect/PrimaryKey';
+import { HttpService } from 'container-fluid/Http.ts';
+import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
 
 export class ResolveVersionsErr extends S.TaggedError<ResolveVersionsErr>()('ResolveVersionsErr', {
   name: S.string,

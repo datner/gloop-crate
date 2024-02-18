@@ -6,57 +6,57 @@
 
 import * as F from 'effect/Function';
 import * as Ef from 'effect/Effect';
+import * as A from 'effect/ReadonlyArray';
 import * as O from 'effect/Option';
 import * as Ctx from 'effect/Context';
 import * as HashMap from 'effect/HashMap';
 
-import { ResolveVersionsErr } from './versions/ScrapedVersion.ts';
-import { HttpService } from './Http.ts';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import { HttpService } from 'container-fluid/Http.ts';
 
 // Distro's
-import { GetAlpineVersions } from './distributions/Alpine.ts';
-import { GetDebianVersions } from './distributions/Debian.ts';
-import { GetOracleVersions } from './distributions/Notora.ts';
-import { GetPhotonVersions } from './distributions/Photon.ts';
-import { GetRockyVersions } from './distributions/Rocky.ts';
-import { GetUniversalBaseImageVersions } from './distributions/UBI.ts';
+import { GetAlpineVersions } from 'container-fluid/distributions/Alpine.ts';
+import { GetDebianVersions } from 'container-fluid/distributions/Debian.ts';
+import { GetOracleVersions } from 'container-fluid/distributions/Notora.ts';
+import { GetPhotonVersions } from 'container-fluid/distributions/Photon.ts';
+import { GetRockyVersions } from 'container-fluid/distributions/Rocky.ts';
+import { GetUniversalBaseImageVersions } from 'container-fluid/distributions/UBI.ts';
 
 // Languages
-import { GetErlangVersions } from './languages/Erlang.ts';
-import { GetGolangVersions } from './languages/Golang.ts';
-import { GetGraalPyVersions } from './languages/GraalPy.ts';
-import { GetGraalVMVersions } from './languages/GraalVM.ts';
-import { GetJDKVersions } from './languages/JDK.ts';
-import { GetNodeVersions } from './languages/Node.ts';
-import { GetPythonVersions } from './languages/Python.ts';
-import { GetRubyVersions } from './languages/Ruby.ts';
-import { GetTruffleRubyVersions } from './languages/TruffleRuby.ts';
+import { GetErlangVersions } from 'container-fluid/languages/Erlang.ts';
+import { GetGolangVersions } from 'container-fluid/languages/Golang.ts';
+import { GetGraalPyVersions } from 'container-fluid/languages/GraalPy.ts';
+import { GetGraalVMVersions } from 'container-fluid/languages/GraalVM.ts';
+import { GetJDKVersions } from 'container-fluid/languages/JDK.ts';
+import { GetNodeVersions } from 'container-fluid/languages/Node.ts';
+import { GetPythonVersions } from 'container-fluid/languages/Python.ts';
+import { GetRubyVersions } from 'container-fluid/languages/Ruby.ts';
+import { GetTruffleRubyVersions } from 'container-fluid/languages/TruffleRuby.ts';
 
 // Everything else
-import { ArtifactVersions } from './apps/artifacts/Artifacts.ts';
-import { AutoscalingVersions } from './apps/autoscaling/Autoscaling.ts';
-import { BackupsVersions } from './apps/backups/Backups.ts';
-import { BudgetsVersions } from './apps/budgets/Budgets.ts';
-import { ChaosVersions } from './apps/chaos/Chaos.ts';
-import { CommunicationsVersions } from './apps/communications/Communications.ts';
-import { ConnectivityVersions } from './apps/connectivity/Connectivity.ts';
-import { DatabaseVersions } from './apps/database/Database.ts';
-import { DeliveryVersions } from './apps/delivery/Delivery.ts';
-import { DevelopmentVersions } from './apps/development/Development.ts';
-import { DomainsVersions } from './apps/domains/Domains.ts';
-import { EventSourcingVersions } from './apps/event-sourcing/EventSourcing.ts';
-import { ExtractTransformLoadVersions } from './apps/extract-transform-load/ExtractTransformLoad.ts';
-import { GitVersions } from './apps/git/Git.ts';
-import { InfraVersions } from './apps/infra/Infra.ts';
-import { ItsmVersions } from './apps/itsm/Itsm.ts';
-import { MachineLearningVersions } from './apps/machine-learning/MachineLearning.ts';
-import { ObservabilityVersions } from './apps/observability/Observability.ts';
-import { SecretsVersions } from './apps/secrets/Secrets.ts';
-import { SecurityVersions } from './apps/security/Security.ts';
-import { ServerlessVersions } from './apps/serverless/Serverless.ts';
-import { ServiceMeshVersions } from './apps/service-mesh/ServiceMesh.ts';
-import { StorageVersions } from './apps/storage/Storage.ts';
-import * as A from 'effect/ReadonlyArray';
+import { ArtifactVersions } from 'container-fluid/apps/artifacts/Artifacts.ts';
+import { AutoscalingVersions } from 'container-fluid/apps/autoscaling/Autoscaling.ts';
+import { BackupsVersions } from 'container-fluid/apps/backups/Backups.ts';
+import { BudgetsVersions } from 'container-fluid/apps/budgets/Budgets.ts';
+import { ChaosVersions } from 'container-fluid/apps/chaos/Chaos.ts';
+import { CommunicationsVersions } from 'container-fluid/apps/communications/Communications.ts';
+import { ConnectivityVersions } from 'container-fluid/apps/connectivity/Connectivity.ts';
+import { DatabaseVersions } from 'container-fluid/apps/database/Database.ts';
+import { DeliveryVersions } from 'container-fluid/apps/delivery/Delivery.ts';
+import { DevelopmentVersions } from 'container-fluid/apps/development/Development.ts';
+import { DomainsVersions } from 'container-fluid/apps/domains/Domains.ts';
+import { EventSourcingVersions } from 'container-fluid/apps/event-sourcing/EventSourcing.ts';
+import { ExtractTransformLoadVersions } from 'container-fluid/apps/extract-transform-load/ExtractTransformLoad.ts';
+import { GitVersions } from 'container-fluid/apps/git/Git.ts';
+import { InfraVersions } from 'container-fluid/apps/infra/Infra.ts';
+import { ItsmVersions } from 'container-fluid/apps/itsm/Itsm.ts';
+import { MachineLearningVersions } from 'container-fluid/apps/machine-learning/MachineLearning.ts';
+import { ObservabilityVersions } from 'container-fluid/apps/observability/Observability.ts';
+import { SecretsVersions } from 'container-fluid/apps/secrets/Secrets.ts';
+import { SecurityVersions } from 'container-fluid/apps/security/Security.ts';
+import { ServerlessVersions } from 'container-fluid/apps/serverless/Serverless.ts';
+import { ServiceMeshVersions } from 'container-fluid/apps/service-mesh/ServiceMesh.ts';
+import { StorageVersions } from 'container-fluid/apps/storage/Storage.ts';
 
 export const InvalidVersionError = (name: string, version: O.Option<string>, lastVersion: O.Option<string>) => {
   const toUnknown = O.getOrElse(() => 'unknown');
