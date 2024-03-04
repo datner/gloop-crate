@@ -9,10 +9,15 @@ import * as Resolver from 'effect/RequestResolver';
 import * as Ef from 'effect/Effect';
 import * as A from 'effect/ReadonlyArray';
 import * as S from '@effect/schema/Schema';
+import * as Config from 'effect/Config';
 import { PrimaryKey, symbol as PK } from 'effect/PrimaryKey';
+
+import * as ResolverExperimental from '@effect/experimental/RequestResolver';
+import * as PlatformNode from '@effect/platform-node';
 
 import { load as ParseBody } from 'cheerio';
 
+import * as LmdbCache from 'container-fluid/versions/LmdbCache.ts';
 import { HttpService } from 'container-fluid/Http.ts';
 import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
 
@@ -73,4 +78,20 @@ export const ScrapeVersionsResolver = F.pipe(
     )
   ),
   Resolver.contextFromServices(HttpService)
+);
+
+// const CachedScrapeVersionsResolverId = Symbol.for("ScrapeVersionsLMDB")
+
+export const CachedScrapeVersionsResolver = F.pipe(
+  Ef.Do,
+  Ef.bind('cacheDir', () => F.pipe(Config.string('CACHE_DIR'), Config.withDefault('.cache/scraped'))),
+  Ef.bind('disableCache', () => F.pipe(Config.string('DISABLE_CACHE'), Config.withDefault('false'))),
+  Ef.bind('resolver', () => ScrapeVersionsResolver),
+  Ef.flatMap(({ resolver, cacheDir, disableCache }) =>
+    disableCache
+      ? Ef.succeed(resolver)
+      : F.pipe(ResolverExperimental.persisted(resolver, 'ScrapeVersionsLMDB'), Ef.provide(LmdbCache.layerResult({ path: cacheDir })))
+  ),
+  Ef.scoped,
+  Ef.provide(PlatformNode.NodeContext.layer)
 );

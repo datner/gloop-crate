@@ -9,7 +9,7 @@ import * as F from 'effect/Function';
 import * as A from 'effect/ReadonlyArray';
 import * as HashMap from 'effect/HashMap';
 
-import { ScrapeVersionsResolver, ScrapeVersionsReq } from 'container-fluid/versions/ScrapedVersion.ts';
+import { ScrapeVersionsReq, CachedScrapeVersionsResolver } from 'container-fluid/versions/ScrapedVersion.ts';
 import { SemanticVersion } from 'container-fluid/versions/SemanticVersion.ts';
 import { Chunk, ChunkTemplate } from 'container-fluid/Distro.ts';
 
@@ -40,7 +40,10 @@ export const Chunks = HashMap.fromIterable<Chunk, ChunkTemplate>([
 ]);
 
 export const GetAlpineVersions = F.pipe(
-  Ef.request(new ScrapeVersionsReq({ name: 'Alpine', link: 'https://www.alpinelinux.org/releases', selector: 'div.releases tr td a' }), ScrapeVersionsResolver),
+  Ef.request(
+    new ScrapeVersionsReq({ name: 'Alpine', link: 'https://www.alpinelinux.org/releases', selector: 'div.releases tr td a' }),
+    CachedScrapeVersionsResolver
+  ),
   Ef.withRequestCaching(true),
   Ef.map(
     F.flow(

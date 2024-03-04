@@ -20,6 +20,12 @@ export default defineConfig({
     // setupFiles: ['./setup.node.ts']
   },
   resolve: {
-    alias: [{ find: 'container-fluid', replacement: path.resolve(__dirname, 'packages/gloop-crate-container-fluid/src') }]
+    alias: [
+      { find: 'cli', replacement: path.resolve(__dirname, 'packages/gloop-crate-cli/src') },
+      { find: 'container-fluid', replacement: path.resolve(__dirname, 'packages/gloop-crate-container-fluid/src') },
+      { find: 'operator', replacement: path.resolve(__dirname, 'packages/gloop-crate-operator/src') },
+      { find: 'packages', replacement: path.resolve(__dirname, 'packages/gloop-crate-packages/src') },
+      { find: 'vulnerabilities', replacement: path.resolve(__dirname, 'packages/gloop-crate-vulnerabilities/src') }
+    ]
   }
 });

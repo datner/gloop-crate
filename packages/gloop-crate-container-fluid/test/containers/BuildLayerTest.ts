@@ -24,7 +24,7 @@ describe('Dockerfile layers', async () => {
         HashSet.values,
         A.fromIterable,
         A.map((distro: Distro) =>
-          F.pipe(testBuildLayer, LayerToString(distro), (rendered) => expect(rendered).toMatchFileSnapshot(`__snapshots__/render-layer/${distro}.ts.snap`))
+          F.pipe(testBuildLayer, LayerToString(distro), (rendered) => expect(rendered).toMatchFileSnapshot(`__snapshots__/render-layer/Dockerfile.${distro}`))
         )
       )
     );

@@ -27,7 +27,7 @@ describe('Dockerfile steps', async () => {
           Promise.all(
             testBuildSteps.map(([name, step]) =>
               F.pipe(step as BuildStep, StepToString(distro), (rendered) =>
-                expect(rendered).toMatchFileSnapshot(`__snapshots__/render-step/${distro}-${name}.ts.snap`)
+                expect(rendered).toMatchFileSnapshot(`__snapshots__/render-step/Dockerfile.${distro}-${name}`)
               )
             )
           )

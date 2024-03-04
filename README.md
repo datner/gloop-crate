@@ -28,7 +28,7 @@ libdiscovery node:21 /usr/local/bin/node
 
 ## Support
 
-Gloop Crate project, derived images, and dockerfiles do not imply, in any shape or form, that Red Hat / Oracle / VMWare support or endorse their usage.
+Gloop Crate project, derived images, and dockerfiles do not imply, in any shape or form, that Red Hat / Oracle / VMware support or endorse their usage.
 
 The author of Gloop Crate project [Yuriy Yarosh](mailto:yuriy@yarosh.dev) does provide limited commercial support for the provided Dockerfiles, container images, and supply chain audit.
 
@@ -58,16 +58,14 @@ The author of Gloop Crate project [Yuriy Yarosh](mailto:yuriy@yarosh.dev) does p
 
  - [x] Advanced layer caching
  - [x] Forced layer cache invalidation and automatic advisory updates
- - [x] Multi-distro [libdiscovery](./packages/libdiscovery) trimmed [distroless](https://github.com/GoogleContainerTools/distroless) images 
+ - [x] Multi-distro [distroless](https://github.com/GoogleContainerTools/distroless) images 
  - [x] CI build pipeline generation for dependent containers
  - [ ] [in-toto](https://in-toto.io/) attestation and sigstore keyless signing support
  - [ ] [GitSign](https://github.com/sigstore/gitsign) support
- - [ ] Comprehensive distribution channels 
- - [ ] Anomaly detection support
  - [ ] [Unikraft](https://unikraft.org/) images
  - [ ] [FIPS](https://csrc.nist.gov/pubs/fips/140-2/upd2/final) support
 
-## Dockerfiles 
+## Dockerfiles
 
 GloopCrate generates dockerfiles for
 

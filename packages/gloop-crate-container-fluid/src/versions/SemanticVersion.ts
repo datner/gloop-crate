@@ -5,18 +5,18 @@
 */
 
 import { SemVer } from 'semver';
-import * as S from '@effect/schema/Schema';
+import * as S from '@effect/schema';
 import { PrimaryKey, symbol as PK } from 'effect/PrimaryKey';
 import * as Equivalence from '@effect/schema/Equivalence';
 import * as Order from 'effect/Order';
 
 export class SemanticVersion
-  extends S.Class<SemanticVersion>()({
-    major: S.number,
-    minor: S.number,
-    patch: S.number,
-    version: S.string,
-    raw: S.string
+  extends S.Schema.Class<SemanticVersion>()({
+    major: S.Schema.number,
+    minor: S.Schema.number,
+    patch: S.Schema.number,
+    version: S.Schema.string,
+    raw: S.Schema.string
   })
   implements PrimaryKey
 {

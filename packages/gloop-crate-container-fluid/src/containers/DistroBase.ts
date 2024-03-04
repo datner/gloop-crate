@@ -48,8 +48,8 @@ export const Base = (org: string, distro: Distro, timestamp: number, version: O.
   F.pipe(
     Versions,
     Ef.flatMap((versions) => versions.getVersions(distro)),
-    ResolveVersionsErr.wrapAnyError(distro),
     Ef.flatMap(Cont.versionToUse(distro, version)),
+    ResolveVersionsErr.wrapAnyError(distro),
     Ef.map((version) =>
       Cont.Container({
         org: '',

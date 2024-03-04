@@ -33,7 +33,7 @@ describe('Dockerfile RUN commands', async () => {
           Promise.all(
             testCommands.map(([name, command]) =>
               F.pipe(command as BuildStepCommand, CommandToString(distro), (rendered) =>
-                expect(rendered).toMatchFileSnapshot(`__snapshots__/render-command/${distro}-${name}.ts.snap`)
+                expect(rendered).toMatchFileSnapshot(`__snapshots__/render-command/Dockerfile.${distro}-${name}`)
               )
             )
           )

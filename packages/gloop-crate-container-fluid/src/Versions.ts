@@ -58,9 +58,12 @@ import { ServerlessVersions } from 'container-fluid/apps/serverless/Serverless.t
 import { ServiceMeshVersions } from 'container-fluid/apps/service-mesh/ServiceMesh.ts';
 import { StorageVersions } from 'container-fluid/apps/storage/Storage.ts';
 
-export const InvalidVersionError = (name: string, version: O.Option<string>, lastVersion: O.Option<string>) => {
-  const toUnknown = O.getOrElse(() => 'unknown');
-  return Ef.fail(new ResolveVersionsErr({ name, message: `Invalid version ${toUnknown(version)}, last ${name} version is ${toUnknown(lastVersion)}` }));
+export const InvalidVersionError = (name: string, version: O.Option<string>, versions: string[]) => {
+  const reversedVersions = F.pipe(versions, A.reverse, A.join(' '));
+
+  return Ef.fail(
+    new ResolveVersionsErr({ name, message: `Invalid version ${O.getOrElse(() => 'unknown')(version)}, last ${name} version is ${reversedVersions}` })
+  );
 };
 
 const DistroVersions = HashMap.fromIterable([

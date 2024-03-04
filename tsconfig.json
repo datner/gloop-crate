@@ -2,7 +2,9 @@
   "include": [
     "packages/gloop-crate-cli/src/**/*.ts",
     "packages/gloop-crate-container-fluid/src/**/*.ts",
-    "packages/gloop-crate-operator/src/**/*.ts"
+    "packages/gloop-crate-operator/src/**/*.ts",
+    "packages/gloop-crate-packages/src/**/*.ts",
+    "packages/gloop-crate-vulnerabilities/src/**/*.ts"
   ],
   "exclude": [],
   "ts-node": {
@@ -45,8 +47,20 @@
     "declaration": false,
     "declarationMap": false,
     "paths": {
+      "cli/*": [
+        "packages/gloop-crate-cli/src/*"
+      ],
       "container-fluid/*": [
         "packages/gloop-crate-container-fluid/src/*"
+      ],
+      "operator/*": [
+        "packages/gloop-crate-operator/src/*"
+      ],
+      "packages/*": [
+        "packages/gloop-crate-packages/src/*",
+      ],
+      "vulnerabilities/*": [
+        "packages/gloop-crate-vulnerabilities/src/*"
       ]
     }
   }

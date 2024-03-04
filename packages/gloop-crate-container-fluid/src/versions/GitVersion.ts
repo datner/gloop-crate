@@ -14,13 +14,15 @@ import * as Secret from 'effect/Secret';
 import * as A from 'effect/ReadonlyArray';
 import * as S from '@effect/schema/Schema';
 import * as Order from 'effect/Order';
-
+import * as PlatformNode from '@effect/platform-node';
+import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
+import * as ResolverExperimental from '@effect/experimental/RequestResolver';
 import { PrimaryKey, symbol as PK } from 'effect/PrimaryKey';
 // import * as ExperimentalRequestResolver from '@effect/experimental/RequestResolver';
 
-import { request as GithubRequest } from '@octokit/request';
-import { ResolveVersionsErr } from 'container-fluid/versions/ScrapedVersion.ts';
 import { HttpService } from 'container-fluid/Http.ts';
+import { request as GithubRequest } from '@octokit/request';
+import * as LmdbCache from 'container-fluid/versions/LmdbCache.ts';
 // import {SemanticVersion} from "./SemanticVersion";
 
 export class GitVersionsReq
@@ -153,4 +155,18 @@ export const GitVersionsResolver = F.pipe(
   ),
   Resolver.contextFromServices(HttpService)
   // Ef.map((resolver) => ExperimentalRequestResolver.persisted(resolver, 'e'))
+);
+
+export const CachedGitVersionsResolver = F.pipe(
+  Ef.Do,
+  Ef.bind('resolver', () => GitVersionsResolver),
+  Ef.bind('cacheDir', () => F.pipe(Config.string('CACHE_DIR'), Config.withDefault('.cache/git'))),
+  Ef.bind('disableCache', () => F.pipe(Config.string('DISABLE_CACHE'), Config.withDefault('false'))),
+  Ef.flatMap(({ resolver, cacheDir, disableCache }) =>
+    disableCache
+      ? Ef.succeed(resolver)
+      : F.pipe(ResolverExperimental.persisted(resolver, 'GitVersionsLMDB'), Ef.provide(LmdbCache.layerResult({ path: cacheDir })))
+  ),
+  Ef.scoped,
+  Ef.provide(PlatformNode.NodeContext.layer)
 );

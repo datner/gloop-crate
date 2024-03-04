@@ -39,29 +39,29 @@ import { Ruby } from 'container-fluid/languages/Ruby.ts';
 import { Rust } from 'container-fluid/languages/Rust.ts';
 import { TruffleRuby } from 'container-fluid/languages/TruffleRuby.ts';
 
-import { ArtifactsContainers } from 'container-fluid/apps/artifacts/Artifacts.ts';
-import { AutoscalingContainers } from 'container-fluid/apps/autoscaling/Autoscaling.ts';
-import { BackupsContainers } from 'container-fluid/apps/backups/Backups.ts';
-import { BudgetsContainers } from 'container-fluid/apps/budgets/Budgets.ts';
-import { ChaosContainers } from 'container-fluid/apps/chaos/Chaos.ts';
-import { CommunicationsContainers } from 'container-fluid/apps/communications/Communications.ts';
-import { ConnectivityContainers } from 'container-fluid/apps/connectivity/Connectivity.ts';
-import { DatabaseContainers } from 'container-fluid/apps/database/Database.ts';
-import { DeliveryContainers } from 'container-fluid/apps/delivery/Delivery.ts';
-import { DevelopmentContainers } from 'container-fluid/apps/development/Development.ts';
-import { DomainsContainers } from 'container-fluid/apps/domains/Domains.ts';
-import { EventSourcingContainers } from 'container-fluid/apps/event-sourcing/EventSourcing.ts';
-import { ExtractTransformLoadContainers } from 'container-fluid/apps/extract-transform-load/ExtractTransformLoad.ts';
-import { GitContainers } from 'container-fluid/apps/git/Git.ts';
-import { InfraContainers } from 'container-fluid/apps/infra/Infra.ts';
-import { ItsmContainers } from 'container-fluid/apps/itsm/Itsm.ts';
-import { MachineLearningContainers } from 'container-fluid/apps/machine-learning/MachineLearning.ts';
-import { ObservabilityContainers } from 'container-fluid/apps/observability/Observability.ts';
-import { SecretsContainers } from 'container-fluid/apps/secrets/Secrets.ts';
-import { SecurityContainers } from 'container-fluid/apps/security/Security.ts';
-import { ServerlessContainers } from 'container-fluid/apps/serverless/Serverless.ts';
-import { ServiceMeshContainers } from 'container-fluid/apps/service-mesh/ServiceMesh.ts';
-import { StorageContainers } from 'container-fluid/apps/storage/Storage.ts';
+// import { ArtifactsContainers } from 'container-fluid/apps/artifacts/Artifacts.ts';
+// import { AutoscalingContainers } from 'container-fluid/apps/autoscaling/Autoscaling.ts';
+// import { BackupsContainers } from 'container-fluid/apps/backups/Backups.ts';
+// import { BudgetsContainers } from 'container-fluid/apps/budgets/Budgets.ts';
+// import { ChaosContainers } from 'container-fluid/apps/chaos/Chaos.ts';
+// import { CommunicationsContainers } from 'container-fluid/apps/communications/Communications.ts';
+// import { ConnectivityContainers } from 'container-fluid/apps/connectivity/Connectivity.ts';
+// import { DatabaseContainers } from 'container-fluid/apps/database/Database.ts';
+// import { DeliveryContainers } from 'container-fluid/apps/delivery/Delivery.ts';
+// import { DevelopmentContainers } from 'container-fluid/apps/development/Development.ts';
+// import { DomainsContainers } from 'container-fluid/apps/domains/Domains.ts';
+// import { EventSourcingContainers } from 'container-fluid/apps/event-sourcing/EventSourcing.ts';
+// import { ExtractTransformLoadContainers } from 'container-fluid/apps/extract-transform-load/ExtractTransformLoad.ts';
+// import { GitContainers } from 'container-fluid/apps/git/Git.ts';
+// import { InfraContainers } from 'container-fluid/apps/infra/Infra.ts';
+// import { ItsmContainers } from 'container-fluid/apps/itsm/Itsm.ts';
+// import { MachineLearningContainers } from 'container-fluid/apps/machine-learning/MachineLearning.ts';
+// import { ObservabilityContainers } from 'container-fluid/apps/observability/Observability.ts';
+// import { SecretsContainers } from 'container-fluid/apps/secrets/Secrets.ts';
+// import { SecurityContainers } from 'container-fluid/apps/security/Security.ts';
+// import { ServerlessContainers } from 'container-fluid/apps/serverless/Serverless.ts';
+// import { ServiceMeshContainers } from 'container-fluid/apps/service-mesh/ServiceMesh.ts';
+// import { StorageContainers } from 'container-fluid/apps/storage/Storage.ts';
 
 // export type CopyFromTo = { from: string; to: string; layer: string };
 
@@ -130,9 +130,9 @@ export const versionToUse = (distro: Distro, version: O.Option<string>) => (avai
       F.pipe(
         version,
         O.flatMap((version: string) => (version === 'latest' ? F.pipe(availableVersions, A.last) : O.some(version))),
-        O.filter((r) => A.contains(availableVersions, r)),
+        O.filter((r) => A.contains(availableVersions, r.toString())),
         O.match({
-          onNone: () => InvalidVersionError(distro, version, A.last(availableVersions)),
+          onNone: () => InvalidVersionError(distro, version, availableVersions),
           onSome: (version) => Ef.succeed(version)
         })
       )
@@ -174,31 +174,31 @@ const LanguageContainers = HashMap.fromIterable([
 export const AllContainers = F.pipe(
   [
     DistroContainers,
-    LanguageContainers,
-    // Everything else
-    ArtifactsContainers,
-    AutoscalingContainers,
-    BackupsContainers,
-    BudgetsContainers,
-    ChaosContainers,
-    CommunicationsContainers,
-    ConnectivityContainers,
-    DatabaseContainers,
-    DeliveryContainers,
-    DevelopmentContainers,
-    DomainsContainers,
-    EventSourcingContainers,
-    ExtractTransformLoadContainers,
-    GitContainers,
-    InfraContainers,
-    ItsmContainers,
-    MachineLearningContainers,
-    ObservabilityContainers,
-    SecretsContainers,
-    SecurityContainers,
-    ServerlessContainers,
-    ServiceMeshContainers,
-    StorageContainers
+    LanguageContainers
+    // // Everything else
+    // ArtifactsContainers,
+    // AutoscalingContainers,
+    // BackupsContainers,
+    // BudgetsContainers,
+    // ChaosContainers,
+    // CommunicationsContainers,
+    // ConnectivityContainers,
+    // DatabaseContainers,
+    // DeliveryContainers,
+    // DevelopmentContainers,
+    // DomainsContainers,
+    // EventSourcingContainers,
+    // ExtractTransformLoadContainers,
+    // GitContainers,
+    // InfraContainers,
+    // ItsmContainers,
+    // MachineLearningContainers,
+    // ObservabilityContainers,
+    // SecretsContainers,
+    // SecurityContainers,
+    // ServerlessContainers,
+    // ServiceMeshContainers,
+    // StorageContainers
   ],
   A.map(HashMap.toEntries), // TODO: HashMap.concat ?
   A.flatten,

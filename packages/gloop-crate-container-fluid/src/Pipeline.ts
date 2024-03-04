@@ -67,7 +67,7 @@ export const SortDependencies = (containers: Container[]): Container[][] => {
   );
 };
 
-const Pipeline = (pipelineType: Pipeline, targetDir: string, containers: Container[]) => {
+export const Pipeline = (pipelineType: Pipeline, targetDir: string, containers: Container[]) => {
   switch (pipelineType) {
     case 'bash':
       return Bash(targetDir, SortDependencies(containers));
@@ -79,7 +79,5 @@ const Pipeline = (pipelineType: Pipeline, targetDir: string, containers: Contain
       return GithubActions(targetDir, SortDependencies(containers));
     case 'gitlab':
       return Gitlab(targetDir, SortDependencies(containers));
-    default:
-      return '';
   }
 };
