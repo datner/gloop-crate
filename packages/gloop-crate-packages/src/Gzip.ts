@@ -54,16 +54,18 @@ export const GZipStreamClientLive = GZipStreamClient.of({
     F.pipe(
       Http.client.Client,
       Ef.map(Http.client.filterStatusOk),
-      Ef.flatMap((client) => client(F.pipe(Http.request.get(uri), Http.request.accept('*/*')))),
+      Ef.flatMap((client) => client(F.pipe(Http.request.get(uri), Http.request.accept('*/*'), Http.request.setHeader('connection', 'keep-alive')))),
       Ef.provide(PlatformNode.NodeHttpClient.layer),
       Http.response.stream,
       NodeStream.pipeThroughSimple(() => createGunzip()),
       St.decodeText,
       St.splitLines,
-      St.mapError((err) =>
-        (err as GzipStreamError)._tag === 'GzipStreamError'
+      St.mapError((err) => {
+        console.error(err);
+
+        return (err as GzipStreamError)._tag === 'GzipStreamError'
           ? (err as GzipStreamError)
-          : new GzipStreamError({ message: (err as Http.error.HttpClientError).reason.toString() })
-      )
+          : new GzipStreamError({ message: (err as Http.error.HttpClientError).reason.toString() });
+      })
     ) as St.Stream<string, GzipStreamError>
 });
