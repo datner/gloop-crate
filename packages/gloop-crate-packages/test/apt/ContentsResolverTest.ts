@@ -18,7 +18,7 @@ describe('Debian APT contents resolver', async () => {
     const req = new ContentsRequest({
       repo: new Repo({
         source: false,
-        uri: 'http://ftp.debian.org',
+        uri: 'http://ftp.pl.debian.org',
         release: 'stable',
         components: ['main']
       }),

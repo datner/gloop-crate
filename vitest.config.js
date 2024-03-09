@@ -15,8 +15,8 @@ export default defineConfig({
       reporter: ['text', 'lcov']
     },
     environment: 'node',
-    include: ['test/**/*Test.ts']
-    // pool: 'vmForks'
+    include: ['test/**/*Test.ts'],
+    pool: 'forks'
     // setupFiles: ['./setup.node.ts']
   },
   resolve: {

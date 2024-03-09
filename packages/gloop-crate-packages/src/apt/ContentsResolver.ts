@@ -38,9 +38,8 @@ export class ContentsRequest
   }
 }
 
-export const ContentsResolver = RequestResolver.fromEffect((req: ContentsRequest) => {
-  console.error(`${req.repo.uri}/debian/dists/${req.repo.release}/${F.pipe(req.repo.components, A.join('/'))}/Contents-all.gz`);
-  return F.pipe(
+export const ContentsResolver = RequestResolver.fromEffect((req: ContentsRequest) =>
+  F.pipe(
     GZipStreamClient,
     St.provideService(GZipStreamClient, GZipStreamClientLive),
     St.flatMap((client) =>
@@ -62,5 +61,5 @@ export const ContentsResolver = RequestResolver.fromEffect((req: ContentsRequest
     St.mapError(ClientError.fromErr),
     St.runCollect,
     Ef.map(A.fromIterable)
-  );
-});
+  )
+);

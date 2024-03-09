@@ -8,6 +8,7 @@ import { createGunzip } from 'node:zlib';
 
 import * as F from 'effect/Function';
 import * as Ef from 'effect/Effect';
+import * as O from 'effect/Option';
 import * as Ctx from 'effect/Context';
 import * as St from 'effect/Stream';
 import * as S from '@effect/schema/Schema';
@@ -27,7 +28,12 @@ export class GzipStreamError
   extends S.TaggedError<GzipStreamError>()('GzipStreamError', {
     message: S.string
   })
-  implements Error {}
+  implements Error
+{
+  static fromErr(err: unknown) {
+    return new GzipStreamError({ message: (err as Error).message });
+  }
+}
 
 export const appendUintArray = ({ buffer, len }: { buffer: Uint8Array; len: number }, other: Uint8Array) => {
   if (buffer.byteLength < len + other.byteLength) {
@@ -54,18 +60,18 @@ export const GZipStreamClientLive = GZipStreamClient.of({
     F.pipe(
       Http.client.Client,
       Ef.map(Http.client.filterStatusOk),
-      Ef.flatMap((client) => client(F.pipe(Http.request.get(uri), Http.request.accept('*/*'), Http.request.setHeader('connection', 'keep-alive')))),
+      Ef.flatMap((client) => client(F.pipe(Http.request.get(uri)))),
       Ef.provide(PlatformNode.NodeHttpClient.layer),
       Http.response.stream,
       NodeStream.pipeThroughSimple(() => createGunzip()),
       St.decodeText,
       St.splitLines,
-      St.mapError((err) => {
-        console.error(err);
+      St.catchSome((err: unknown) => {
+        if ((err as GzipStreamError | Http.error.ResponseError)._tag === 'ResponseError') {
+          return O.some(St.empty);
+        }
 
-        return (err as GzipStreamError)._tag === 'GzipStreamError'
-          ? (err as GzipStreamError)
-          : new GzipStreamError({ message: (err as Http.error.HttpClientError).reason.toString() });
+        return O.none();
       })
     ) as St.Stream<string, GzipStreamError>
 });
