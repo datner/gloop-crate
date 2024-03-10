@@ -6,21 +6,20 @@
 
 import { createGunzip } from 'node:zlib';
 
-import * as F from 'effect/Function';
 import * as Ef from 'effect/Effect';
-import * as O from 'effect/Option';
 import * as Ctx from 'effect/Context';
 import * as St from 'effect/Stream';
 import * as S from '@effect/schema/Schema';
 
 import * as Http from '@effect/platform/HttpClient';
 import * as NodeStream from '@effect/platform-node/NodeStream';
-import * as PlatformNode from '@effect/platform-node';
+import { Unify } from 'effect';
+import { HttpClient } from '@effect/platform';
 
 export class GZipStreamClient extends Ctx.Tag('GZipStreamClient')<
   GZipStreamClient,
   {
-    readonly read: (uri: string) => St.Stream<string, GzipStreamError>;
+    readonly read: (uri: string) => St.Stream<string, GzipStreamError, HttpClient.client.Client.Default>;
   }
 >() {}
 
@@ -57,21 +56,21 @@ export const appendUintArray = ({ buffer, len }: { buffer: Uint8Array; len: numb
 
 export const GZipStreamClientLive = GZipStreamClient.of({
   read: (uri: string) =>
-    F.pipe(
-      Http.client.Client,
+    Http.client.Client.pipe(
       Ef.map(Http.client.filterStatusOk),
-      Ef.flatMap((client) => client(F.pipe(Http.request.get(uri)))),
-      Ef.provide(PlatformNode.NodeHttpClient.layer),
+      Ef.flatMap((client) => client(Http.request.get(uri))),
       Http.response.stream,
       NodeStream.pipeThroughSimple(() => createGunzip()),
-      St.decodeText,
+      (_) => St.decodeText(_),
       St.splitLines,
-      St.catchSome((err: unknown) => {
-        if ((err as GzipStreamError | Http.error.ResponseError)._tag === 'ResponseError') {
-          return O.some(St.empty);
-        }
+      St.catchAll(
+        Unify.unify((err) => {
+          if (err._tag === 'ResponseError') {
+            return St.empty;
+          }
 
-        return O.none();
-      })
-    ) as St.Stream<string, GzipStreamError>
+          return new GzipStreamError({ message: err._tag });
+        })
+      )
+    )
 });

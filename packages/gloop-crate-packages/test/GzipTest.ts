@@ -7,6 +7,7 @@
 import * as Ef from 'effect/Effect';
 import * as F from 'effect/Function';
 import * as St from 'effect/Stream';
+import { NodeHttpClient } from '@effect/platform-node';
 
 import { describe, it } from 'vitest';
 import { GZipStreamClient, GZipStreamClientLive } from 'packages/Gzip.ts';
@@ -19,6 +20,7 @@ describe('Gzip file processing', async () => {
       Ef.provideService(GZipStreamClient, GZipStreamClientLive),
       Ef.map(St.take(10)),
       Ef.flatMap(St.runCollect),
+      Ef.provide(NodeHttpClient.layer),
       Ef.runPromise
     );
 
